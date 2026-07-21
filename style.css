@@ -227,20 +227,28 @@ button:focus-visible,
   display: none;
   padding: var(--space-1);
 }
-.nav-toggle-icon,
-.nav-toggle-icon::before,
-.nav-toggle-icon::after {
+.nav-toggle-icon {
+  position: relative;
   display: block;
   width: 22px;
   height: 2px;
   background: var(--color-text);
   border-radius: 2px;
-  transition: transform var(--transition), opacity var(--transition);
+  transition: background var(--transition);
 }
 .nav-toggle-icon::before,
-.nav-toggle-icon::after { content: ""; position: relative; }
-.nav-toggle-icon::before { top: 6px; }
-.nav-toggle-icon::after { top: 2px; }
+.nav-toggle-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--transition);
+}
+.nav-toggle-icon::before { top: -6px; }
+.nav-toggle-icon::after { top: 6px; }
 
 .nav-list {
   display: flex;
@@ -280,7 +288,7 @@ button:focus-visible,
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-2);
-    background: var(--glass-bg-strong);
+    background: #fff;
     backdrop-filter: blur(var(--glass-blur)) saturate(160%);
     -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
     border-bottom: 1px solid var(--glass-border);
@@ -296,9 +304,13 @@ button:focus-visible,
     opacity: 1;
     visibility: visible;
   }
+  .nav-list a {
+    font-size: 1rem;
+    color: var(--color-text);
+  }
   .nav-toggle[aria-expanded="true"] .nav-toggle-icon { background: transparent; }
-  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before { transform: rotate(45deg) translate(4px, 5px); }
-  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after { transform: rotate(-45deg) translate(4px, -5px); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after { transform: translateY(-6px) rotate(-45deg); }
 }
 
 /* ==========================================================================
@@ -380,14 +392,14 @@ button:focus-visible,
 }
 @media (min-width: 768px) {
   .about-grid {
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 280px 1fr;
     gap: var(--space-5);
     align-items: center;
   }
 }
 
 .about-photo {
-  max-width: 200px;
+  max-width: 260px;
   margin-inline: auto;
 }
 @media (min-width: 768px) {
@@ -396,7 +408,8 @@ button:focus-visible,
 
 .about-photo img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);

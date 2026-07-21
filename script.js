@@ -107,7 +107,8 @@
       const data = projectsData[id];
       if (!data) return;
 
-      imageEl.src = `assets/projects/${id}.jpg`;
+      const ext = id === 'safe-travel' ? 'png' : 'jpg';
+      imageEl.src = `assets/projects/${id}.${ext}`;
       imageEl.alt = `Aperçu du projet ${data.title}`;
       badgeEl.textContent = data.context;
       titleEl.textContent = data.title;
