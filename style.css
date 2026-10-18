@@ -369,7 +369,6 @@ button:focus-visible,
   font-family: var(--font-display);
   font-size: var(--fs-body);
   color: var(--color-text);
-  max-width: 560px;
 }
 
 .cursor {
