@@ -114,7 +114,7 @@
       const data = projectsData[id];
       if (!data) return;
 
-      const ext = ['safe-travel', 'n8n', 'hilton', 'tyredating'].includes(id) ? 'png' : 'jpg';
+      const ext = ['safe-travel', 'n8n', 'hilton', 'tyredating', 'trajets', 'instruct-if'].includes(id) ? 'png' : 'jpg';
       imageEl.src = `assets/projects/${id}.${ext}`;
       imageEl.alt = `Aperçu du projet ${data.title}`;
       badgeEl.textContent = data.context;
