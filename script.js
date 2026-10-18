@@ -2,6 +2,13 @@
   'use strict';
 
   const projectsData = {
+    'tyredating': {
+      title: 'Tyredating',
+      context: 'Stage · Développeur Full Stack · Juin – Août 2026',
+      problem: "Le reporting financier reposait sur une quinzaine de jobs Talend déclenchés à la main, et une partie de l'interface utilisait encore d'anciens écrans JSP.",
+      description: "Automatisation du pipeline de reporting financier en Python, en remplacement d'environ 15 jobs Talend : les rapports se génèrent et se lancent désormais automatiquement, ce qui fait gagner 3 heures de développement par mois. Migration de 5 écrans JSP vers Angular pour une interface plus moderne et ergonomique, et conception de nouvelles APIs pour optimiser la recherche de produits. Participation aux discussions d'équipe en proposant et défendant des choix d'architecture et d'UX.",
+      stack: ['Python', 'pandas', 'MariaDB', 'Angular', 'Java/JSP', 'Talend', 'Git']
+    },
     'safe-travel': {
       title: 'Safe Travel',
       context: 'Projet scolaire · En groupe · Terminé',
@@ -107,7 +114,7 @@
       const data = projectsData[id];
       if (!data) return;
 
-      const ext = id === 'safe-travel' ? 'png' : 'jpg';
+      const ext = ['safe-travel', 'n8n', 'hilton', 'tyredating'].includes(id) ? 'png' : 'jpg';
       imageEl.src = `assets/projects/${id}.${ext}`;
       imageEl.alt = `Aperçu du projet ${data.title}`;
       badgeEl.textContent = data.context;
